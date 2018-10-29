@@ -17,12 +17,14 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy({
         // options for the google strat 
-            callbackURL:'/auth/google/redirect',
-            clientID: process.env.CLIENT_ID || keys.google.clientID,
-            clientSecret: process.env.CLIENT_SECRET || keys.google.clientSecret
-        }, (accessToken, refreshToken, profile, done) => {
+        callbackURL: '/auth/google/redirect',
+        clientID: process.env.CLIENT_ID || keys.google.clientID,
+        clientSecret: process.env.CLIENT_SECRET || keys.google.clientSecret
+    }, (accessToken, refreshToken, profile, done) => {
         // check if user already exists in our database
-        User.findOne({googleId: profile.id}).then((currentUser)=> {
+        User.findOne({
+            googleId: profile.id
+        }).then((currentUser) => {
             if (currentUser) {
                 // already have the user
                 console.log('user is ' + currentUser)
@@ -43,7 +45,7 @@ passport.use(
     })
 )
 
-
-
-
-
+/* Nice work getting this set up!
+ * Thanks for adding comments in your code to explain what each portion of your
+ * code does!
+ */

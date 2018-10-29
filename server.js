@@ -8,7 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const session = require("express-session");
-// const keys = require('./config/keys'); // For local emvironment
+//const keys = require('./config/keys'); // For local emvironment
 const passport = require('passport');
 const _ = require('underscore');
 
@@ -39,11 +39,11 @@ require('./db/db');
  /////////////////                 ///////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 app.use(session({
-    secret:'what is this',
+    secret: 'what is this', // This article explains the secret key very well: https://martinfowler.com/articles/session-secret.html
     resave: false,
     saveUninitialized: false,
     maxAge: 24 * 60 * 60 * 1000,
-    // keys: [keys.session.cookieKey]
+     //keys: [keys.session.cookieKey]
     keys: [keys]
 }))
 
@@ -92,3 +92,8 @@ app.listen(port, ()=>{
     console.log(`i can hear you on port: ${port}`);
 });
 
+
+/* Excellent job with your server.js file.
+ * This is something you would probably want to clean up a bit in terms of 
+ * removing all commented-out code or code that's being unusued.
+ */
